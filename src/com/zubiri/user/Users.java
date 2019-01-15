@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.Scanner;
 
 public class Users {
-	private File users = new File("../../../usersData.txt");
+	private File users = new File("src/usersData.txt");
 	
 	
 	public void setUsers(File users) {
@@ -22,11 +22,13 @@ public class Users {
 	 */
 	public void setUser(User user) {
 		try {
-			BufferedWriter bw = new BufferedWriter(new FileWriter(users));
-			bw.write(user.getName()+"::"+user.getPassword());
-			bw.close();
-		}catch(IOException e) {
-			e.printStackTrace();
+			FileWriter fw = new FileWriter(users, true);
+			fw.write(user.getName() + "::" + user.getPassword());
+			fw.write(System.getProperty("line.separator"));
+			fw.close();
+		} catch (Exception e) {
+
+			System.err.println("Error: " + e.getMessage());
 		}
 	}
 
