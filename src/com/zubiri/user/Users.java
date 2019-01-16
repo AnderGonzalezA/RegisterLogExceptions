@@ -6,6 +6,18 @@ import java.util.Scanner;
 public class Users {
 	private File users = new File("src/usersData.txt");
 	
+	/**
+	 * <p>When you create a User object, if there's no 'userData.txt' in 'src' folder, it will create one</p>
+	 */
+	public Users() {
+		if(!users.exists()) {
+			try {
+				users.createNewFile();
+			}catch(IOException e) {
+				e.printStackTrace();
+			}
+		}
+	}
 	
 	public void setUsers(File users) {
 		this.users = users;
@@ -34,9 +46,8 @@ public class Users {
 
 	/**
 	 * @author Koldo
-	 * @param username you want to find in the ArrayList of created users
-	 * @return index of the User object that has that name, if there's no user with
-	 *         that name it returns -1
+	 * @param username you want to find in the file of created users
+	 * @return User object with the name you enter
 	 */
 	public User getUser(String username) {
 		User user = new User();
@@ -59,7 +70,7 @@ public class Users {
 
 	/**
 	 * @author Koldo
-	 * @return true if there's any User already added to the ArrayList, else, it
+	 * @return true if there's any User already added to the file, else, it
 	 *         returns false
 	 */
 	public boolean hasUser() {
