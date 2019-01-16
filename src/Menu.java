@@ -55,25 +55,29 @@ public class Menu {
 				while (askUsername) {
 					System.out.println("Username:");
 					String name = sc.nextLine();
-					if (user.setName(name)) {
-						askUsername = false;
-						boolean askPassword = true;
-						while (askPassword) {
-							System.out.println("Password:");
-							String password = sc.nextLine();
-							if (user.setPassword(password)) {
-								System.out.println("Done");
-								System.out.println("----------------------");
-								users.setUser(user);
-								askPassword = false;
-							} else {
-								System.out.println("Enter a valid password");
-								System.out.println(
-										"It has to have at least a letter,  a number, a symbol and 8 or more characters long");
+					if(users.getUser(name).getName().equals("null")) {
+						if (user.setName(name)) {
+							askUsername = false;
+							boolean askPassword = true;
+							while (askPassword) {
+								System.out.println("Password:");
+								String password = sc.nextLine();
+								if (user.setPassword(password)) {
+									System.out.println("Done");
+									System.out.println("----------------------");
+									users.setUser(user);
+									askPassword = false;
+								} else {
+									System.out.println("Enter a valid password");
+									System.out.println(
+											"It has to have at least a letter,  a number, a symbol and 8 or more characters long");
+								}
 							}
-						}
-					} else
-						System.out.println("Enter a valid username (no numbers or digits)");
+						} else
+							System.out.println("Enter a valid username (no numbers or digits)");
+					}else
+						System.out.println("That username is alrady taken, try with another one.");
+					
 				}
 				break;
 			default:

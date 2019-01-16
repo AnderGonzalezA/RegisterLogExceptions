@@ -1,4 +1,6 @@
 package com.zubiri.user;
+import java.io.IOException;
+import java.util.Scanner;
 
 public class User {
 	private String name = "null";
@@ -7,8 +9,8 @@ public class User {
 	/**
 	 * @author Koldo
 	 * @param name you want to set
-	 * @return true if it fulfill the demanded requirements (it has to be an only
-	 *         word of only letters)
+	 * @return true if it has to be an only
+	 *         word of only letters
 	 */
 	public boolean setName(String name) {
 		boolean fine = false;
@@ -16,15 +18,18 @@ public class User {
 			this.name = name;
 			fine = true;
 		} else
-			deleteUser();
+			nullUser();
 		return fine;
 	}
 
 	public String getName() {
 		return this.name;
 	}
-
-	public void deleteUser() {
+	
+	/**
+	 * <p>This sets to the user 'null' value in name and in password</p>
+	 */
+	public void nullUser() {
 		name = "null";
 		password = "null";
 	}
@@ -41,7 +46,7 @@ public class User {
 			this.password = password;
 			fine = true;
 		} else
-			deleteUser();
+			nullUser();
 		return fine;
 	}
 
