@@ -1,7 +1,5 @@
 import java.util.Scanner;
 import com.zubiri.user.*;
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 
 public class Menu {
 	public static void main(String[] args) {
